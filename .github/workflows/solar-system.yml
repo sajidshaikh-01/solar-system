@@ -7,9 +7,10 @@ on:
       - main
       - 'feature/*'
 
-env: MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
-     MONGO_USERNAME: ${ { vars.MONGO_USERNAME } }
-     MONGO_PASSWORD: ${ { secrets.MONGO_PASSWORD } }
+env: 
+    MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
+    MONGO_USERNAME: ${ { vars.MONGO_USERNAME } }
+    MONGO_PASSWORD: ${ { secrets.MONGO_PASSWORD } }
     
 jobs:
     unit-testing:
@@ -24,7 +25,7 @@ jobs:
           with:
             node-version: 20
     
-        - name: Install Dependenciess
+        - name: Install Dependencies
           run: npm install
     
         - name: Unit Testing
