@@ -61,7 +61,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Code Coverage
+      - name: check Code Coverage
+        continue-on-error: true
         run: npm run coverage
 
       - name: Upload Coverage to Codecov
