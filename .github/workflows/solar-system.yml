@@ -113,3 +113,11 @@ jobs:
 
           echo testing image URL using wget
           wget -q -O - localhost:30000/live | grep live
+
+
+      - name: Push Docker image to Dockerhub
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
