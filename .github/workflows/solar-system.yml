@@ -76,5 +76,18 @@ jobs:
         uses: codecov/codecov-action@v3
         
 
-      
+    docker-build:
+      name: containerization
+      needs: [unit-testing, code-coverage]
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+
+      - name: Dockerhub login
+        uses: docker/login-action@v3.6.0
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       
